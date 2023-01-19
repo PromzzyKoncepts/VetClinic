@@ -8,8 +8,7 @@ INSERT into animal (name, date_of_birth, escape_attempts, neutered, weight_kg) V
 
 
 -- Day 2 project
-select * from animals;
-alter table animals add column species varchar;
+
 INSERT INTO animal (name, date_of_birth, escape_attempts, neutered, weight_kg) VALUES ('Charmander', '2020/2/8', '0', 'false', '-11.0');
 INSERT into animal (name, date_of_birth, escape_attempts, neutered, weight_kg) VALUES ('Plantmon', '2021-11-15', 2, true, -5.7);
 INSERT into animal (name, date_of_birth, escape_attempts, neutered, weight_kg) VALUES ('Squirtle', '1993-04-02', 3, false, -12.13);
