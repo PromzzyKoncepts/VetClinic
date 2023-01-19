@@ -10,6 +10,6 @@ CREATE TABLE animals (
 );
 
 -- DAY 2
-alter table animals add column species varchar;
+alter table animals add column species varchar(255);
 
 -- DAY 3
