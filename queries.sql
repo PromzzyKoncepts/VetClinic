@@ -119,3 +119,73 @@ SELECT * FROM owner LEFT JOIN animal ON owner.id = animal.owner_id WHERE animal.
 
 /* Who owns the most animal?*/
 SELECT COUNT(*) AS COUNT_OWN, o.full_name FROM animal a JOIN owner o ON o.id=a.owner_id GROUP BY o.full_name ORDER BY COUNT_OWN DESC LIMIT 1;
+
+
+-- DAY 4
+
+SELECT animal.name, visit_date
+FROM visit
+JOIN animal ON animal.id = visit.animal_id
+JOIN vets ON visit.vets_id = vets.id
+WHERE vets.name = 'William Tatcher'
+ORDER BY visit_date DESC LIMIT 1;
+
+
+SELECT COUNT(DISTINCT animal_id)
+FROM visit
+JOIN vets ON visit.vets_id = vets.id
+WHERE vets.name = 'Stephanie Mendez';
+
+SELECT DISTINCT vets.name
+FROM specializations
+RIGHT JOIN vets ON specializations.vets_id = vets.id;
+
+SELECT animal.name, visit_date
+FROM visit
+JOIN animal ON animal.id = visit.animal_id
+JOIN vets ON visit.vets_id = vets.id
+WHERE vets.name = 'Stephanie Mendez' AND
+visit.visit_date BETWEEN '2020-04-01' and '2020-08-30'
+
+
+SELECT count(animal_id) as amount_of_visit, animal.name
+FROM visit
+JOIN animal
+ON animal.id = visit.animal_id
+GROUP BY animal_id, animal.name
+ORDER BY COUNT(animal_id) DESC LIMIT 1;
+
+SELECT animal.name, visit_date
+FROM visit
+JOIN animal ON animal.id = visit.animal_id
+JOIN vets ON visit.vets_id = vets.id
+WHERE vets.name = 'Maisy Smith'
+ORDER BY visit_date LIMIT 1;
+
+SELECT animal.id as animal_id,
+animal.name as animal_name,
+vets.id as vet_id,
+vets.name as vet_name, visit_date
+FROM visit
+JOIN animal ON animal.id = visit.animal_id
+JOIN vets ON visit.vets_id = vets.id
+ORDER BY visit_date LIMIT 1;
+
+SELECT count(animal.name)
+FROM visit
+JOIN animal 
+ON animal.id = visit.animal_id
+JOIN specializations
+ON specializations.vets_id = visit.vets_id
+where animal.species_id <> specializations.species_id;
+
+SELECT species.name 
+FROM visit 
+JOIN vets 
+ON visit.vets_id = vets.id
+join animal on animal.id = visit.animal_id
+join species on species.id = animal.species_id
+WHERE vets.name = 'Maisy Smith'
+GROUP BY animal_id, species.name
+ORDER BY COUNT(animal_id) DESC LIMIT 1;
+
